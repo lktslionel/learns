@@ -1,5 +1,7 @@
 # Learning Power Writing
 
+<br>
+
 ## Prerequesites
 
 * Establish clear direction 
@@ -34,6 +36,8 @@ The Way to get to the outcome
 
 Define a default outline for any kind of content you're writing.
 
+<br>
+
 ## Rules
 
 * Be clear and concise
@@ -50,8 +54,49 @@ Define a default outline for any kind of content you're writing.
 * Don't use shorthand as a result of beign too concise
 * Avoid **Buzzwords** and **Business Jargon**; Instead, use words within the appropriate context.
 
-## Translations (en -> fr)
+<br>
 
-* **Ceiling**: limite ou plafond
-* **Ceiling**: limite ou plafond
+## Tone & Voice
+
+Polish your writing by : 
+* Avoiding unnecessary filler words/phrases
+* Avoir weak verbs and adj
+* REview your work over and over
+* Don't nominalize your writing
+  > <span style="color:red">Don't</span>: Give your post a proofread<br><span style="color:green">Do</span>: Proofread your post
+* know basic ponctuation rules
+* Use noun-modifiers
+  > Editing tips<br>
+* Create smooth transitions in and out of points
+  > Best of of linking nouns/verbs
+* Write with your own style. Write as you would speak to a good friend
+* Know your audiance and tailor your voice accordingly
+* NEVER be crude or offensive
+* BE FUN... Don't be too serious! people like being entertained
+
+<br>
+
+## Extras tips
+
+* Use examples & use cases. This, to amplify your points and create contextual parallels
+* lways keep your theme/purpose in mind while writing
+
+<br>
+
+## Translations 
+
+
+English | French
+---------|---------
+ Ceiling | limite ou plafond 
+ Cellar | Cave 
+ wooden-types crates | caisses en bois 
+ Blow off | laisser tomber
+ Proofread your post | Relisez votre message
+ tailor your voice | adapter votre voix
+ overarching | Primordial
+ 
+
+
+
 
