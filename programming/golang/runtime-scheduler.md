@@ -1,6 +1,7 @@
 ###### PROGRAMMING
 # GO Runtime Scheduler
 
+<br>
 
 ## Quick overview
 
@@ -40,3 +41,37 @@ There are 2 main scheduling strategies :
 * **shedtick**: a processor make sure that each goroutine is executed within a defined time slice. When the execution take longer than expected the goroutine is put back into the run queue of the processor.
 
 * **work-stealing**: When a processor no goroutine left to execute, it steals half of the goroutine of another processor runqueue.
+
+<br>
+
+## Goroutine Gotchas
+
+### Gotcha 1
+
+Panic on a Goroutine will halt the complete program, if not hanlded
+
+**Solution**
+
+Use the `defer` statement to recover from failure in your Goroutine.
+
+```
+
+func simpleFunc(index int, wg *sync.WaitGroup) {
+
+    defer func() { 
+        if r := recover(); r != nil { 
+            fmt.Println("Recovered from", r) 
+        } 
+    }() 
+    ...
+    defer wg.Done()
+```
+
+### Gotcha 2
+
+Don't try to predict the order of execution of your Goroutines.
+
+
+<br>
+
+## Channels and Messages
