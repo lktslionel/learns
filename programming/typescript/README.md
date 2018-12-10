@@ -23,3 +23,5 @@ x = 4;
 var x;
 console.log(x);
 ```
+
+> **Var** declaration **ARE NOT** block-scoped!
