@@ -117,6 +117,42 @@ foreach ($color in $colors) {
 }s
 ```
 
+
+<br>
+
+## Files
+
+### Read 
+
+```powershell
+Cat <FilePath>
+```
+
+### Write
+
+Example : 
+
+```powershell
+GetProcess | Out-File -FilePath <path/to/file>
+```
+
+
+<br>
+
+## Functions
+
+
+
+
+<br>
+
+## Profiles
+
+In power shell, we can use profile to auto load our helper functions.
+The default profile file is located in the `$profile` variable.
+
+
+
 <br>
 
 ## Modules & Snap-ins
@@ -139,11 +175,56 @@ Install-Package -Name <pkg>     [-Source]
 Install-Module  -Name <module>  [-Source]
 ```
 
+> Use `Find-Module -Name <MATCH>` to look for a module.
 
 <br>
 
 ## Advanced stuffs
 
+### Environment varaibles
+
+#### List all en vars 
+
+```powershell
+Get-Childitem env:
+```
+
+#### Create a new env var 
+
+```powershell
+$env:NAME = VALUE
+# or 
+Set-Item -Path env:PATH -Value($env:TEAMS + '/os/bin')
+```
+
+
+
+### Update Type data
+
+You can add a permanent propoerty to an object using some sort of lambda function.
+
+```powershell
+Update-TypeData -TypeName <Object Type> -MemberName <New Property Name> -MemberType scriptproperty -Value <Lambda expr>
+```
+
+Example: 
+
+Add a new property `isDST` to the object type `system.datetime`, with the computed value `$this.isDaylightSavingTime()` as `int`.
+
+```powershell
+Update-TypeData -TypeName system.datetime -MemberName isDST -MemberType scriptproperty -Value {$this.isDaylightSavingTime() -as [int]}
+```
+
+
+
 ### Testing 
 
 You can use [pester](https://github.com/pester/Pester) to test your powershell scripts.
+
+
+<br>
+
+## References
+
+* [Gist | Powershell script template](https://gist.github.com/9to5IT/d81802b28cfd10ab5d89)
+* [ss64 | Env vars with Powershell](https://ss64.com/ps/syntax-env.html)
