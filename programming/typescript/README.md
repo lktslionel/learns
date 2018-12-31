@@ -24,4 +24,37 @@ var x;
 console.log(x);
 ```
 
-> **Var** declaration **ARE NOT** block-scoped!
+
+### Variable declarations
+
+#### Var
+**Var** declaration **IS NOT** block-scoped but it is function scoped
+
+#### Let
+**Var** declaration **IS NOT** function-scoped but block-scoped
+
+#### Const
+**Const** declaration **IS NOT** hoisted
+
+> Use `Object.freeze` to make a object immutable
+
+
+### Types conversion
+
+the `+` operator tries to convenrt things to string 
+
+```js
+'45' + 1 // => 451 (string)
+```
+
+`unary +` operator tries to convenrt thing to numbers 
+
+```js
+(+ '45') // => 45 (number)
+```
+
+`-` tries to make calculation and output a number
+
+```js
+'45' - 1  // => 44 (number)
+```
