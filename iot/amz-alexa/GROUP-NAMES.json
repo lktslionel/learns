@@ -1,0 +1,252 @@
+"values": [
+    {
+        "name": {
+            "value": "meals"
+        }
+    },
+    {
+   "name": {
+        "value": "snacks"
+      }
+    },
+    {
+   "name": {
+        "value": "restaurant"
+      }
+    },
+    {
+   "name": {
+        "value": "beef"
+      }
+    },
+    {
+   "name": {
+        "value": "sausages"
+      }
+    },
+    {
+   "name": {
+        "value": "nut"
+      }
+    },
+    {
+   "name": {
+        "value": "fats"
+      }
+    },
+    {
+   "name": {
+        "value": "fruits"
+      }
+    },
+    {
+   "name": {
+        "value": "poultry"
+      }
+    },
+    {
+   "name": {
+        "value": "fast"
+      }
+    },
+    {
+   "name": {
+        "value": "lamb"
+      }
+    },
+    {
+   "name": {
+        "value": "spices"
+      }
+    },
+    {
+   "name": {
+        "value": "pork"
+      }
+    },
+    {
+   "name": {
+        "value": "soups"
+      }
+    },
+    {
+   "name": {
+        "value": "cereal"
+      }
+    },
+    {
+   "name": {
+        "value": "beverages"
+      }
+    },
+    {
+   "name": {
+        "value": "sweets"
+      }
+    },
+    {
+   "name": {
+        "value": "vegetables"
+      }
+    },
+    {
+   "name": {
+        "value": "baby"
+      }
+    },
+    {
+   "name": {
+        "value": "baked"
+      }
+    },
+    {
+   "name": {
+        "value": "breakfast"
+      }
+    },
+    {
+   "name": {
+        "value": "finfish"
+      }
+    },
+    {
+   "name": {
+        "value": "dairy"
+      }
+    },
+    {
+   "name": {
+        "value": "legumes"
+      }
+    },
+    {
+   "name": {
+        "value": "american"
+      }
+    },
+    {
+   "name": {
+        "value": "meals entrees and side dishes"
+      }
+    },
+    {
+   "name": {
+        "value": "snacks"
+      }
+    },
+    {
+   "name": {
+        "value": "restaurant foods"
+      }
+    },
+    {
+   "name": {
+        "value": "beef products"
+      }
+    },
+    {
+   "name": {
+        "value": "sausages and luncheon meats"
+      }
+    },
+    {
+   "name": {
+        "value": "nut and seed products"
+      }
+    },
+    {
+   "name": {
+        "value": "fats and oils"
+      }
+    },
+    {
+   "name": {
+        "value": "fruits and fruit juices"
+      }
+    },
+    {
+   "name": {
+        "value": "poultry products"
+      }
+    },
+    {
+   "name": {
+        "value": "fast foods"
+      }
+    },
+    {
+   "name": {
+        "value": "lamb veal and game products"
+      }
+    },
+    {
+   "name": {
+        "value": "spices and herbs"
+      }
+    },
+    {
+   "name": {
+        "value": "pork products"
+      }
+    },
+    {
+   "name": {
+        "value": "soups sauces and gravies"
+      }
+    },
+    {
+   "name": {
+        "value": "cereal grains and pasta"
+      }
+    },
+    {
+   "name": {
+        "value": "beverages"
+      }
+    },
+    {
+   "name": {
+        "value": "sweets"
+      }
+    },
+    {
+   "name": {
+        "value": "vegetables and vegetable products"
+      }
+    },
+    {
+   "name": {
+        "value": "baby foods"
+      }
+    },
+    {
+   "name": {
+        "value": "baked products"
+      }
+    },
+    {
+   "name": {
+        "value": "breakfast cereals"
+      }
+    },
+    {
+   "name": {
+        "value": "finfish and shellfish products"
+      }
+    },
+    {
+   "name": {
+        "value": "dairy and egg products"
+      }
+    },
+    {
+   "name": {
+        "value": "legumes and legume products"
+      }
+    },
+    {
+   "name": {
+        "value": "american indian/alaska native foods"
+      }
+    }
+]
