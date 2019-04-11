@@ -7,7 +7,49 @@
 
 * Basic Javascript programming skills 
 
-## Features
+## Concepts
+
+#### Refs
+
+
+A ref is like a database; see the diagram below : 
+
+```
+                 +----------+      +-----------+
+             +-> |  USERS   +----->+ ACCOUNTS  |
+             |   +----------+      +-----------+
+             |
++---------   |
+|  ROOT  +---+
++---------
+
+```
+
+
+
+to create one use the following code : 
+
+```js
+var UsersRef = new Firebase("https://os.firebaseio.com/users")
+```
+
+To access `accounts` ref from `users`, use:
+
+```js
+var AccountsRef = new Firebase("https://os.firebaseio.com/users/accounts")
+// or 
+var UsersRef = new Firebase("https://os.firebaseio.com/users")
+var AccountsRef = UsersRef.child("accounts")
+```
+
+You can also use the following methods to navigate from `child` to the `parent` and even the `root` database (node) : 
+
+```js
+REF.child(...)
+REF.parent(...)
+REF.root(...)
+```
+
 
 #### Auto indexing
 When you delete the value "nice" in a table like 
