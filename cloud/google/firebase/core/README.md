@@ -7,6 +7,12 @@
 
 * Basic Javascript programming skills 
 
+## Missing Features
+
+* Joins
+* Qurey filters
+
+
 ## Concepts
 
 #### Refs
@@ -75,6 +81,37 @@ To get :
 
 ]
 ```
+
+#### Firebase core principles 
+
+##### Don't think relational 
+##### `Root` branches as Primary container
+
+
+##### avoid deep Nesting
+
+nesting could be painful because, when you're requesting data form a ref, you get everything; even nesting data. Make the best use of linking database in order to simulate joins.
+
+```bash
+users -> accounts -> adresses
+
+# could be
+
+users: ...
+
+users_accounts: ...
+
+accounts_adresses: ...
+```
+
+##### Make good use of date duplication
+
+Sometimes you will need to duplicate data in order to address a business need.
+Just make sure you're not duplicating too much if your application write often.
+
+##### Design Around your Data access patterns
+
+First, think about your data access needs
 
 
 ## Objectives 
