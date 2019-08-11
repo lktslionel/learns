@@ -4,7 +4,7 @@
 
 **C#** is a statically typed language that compile into managed code i.e code that depends on services provided by a runtime env (*CLR : Common Language Runtime*).
 
-As services the CLR provide : 
+As services the CLR provide :
 * Memory management
 * Security
 * Execption Handling
@@ -14,7 +14,8 @@ As services the CLR provide :
 
 There are 3 Categories of types : 
 * Value type
-* Referenced type
+* 
+
 * Pointer type
 
 
