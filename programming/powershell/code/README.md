@@ -29,8 +29,11 @@ There are :
 ### Execution Scope
 
 * LocalMachine 
-*¨CurrentUser
+* CurrentUser
 * Process
+
+
+
 
 <br>
 
@@ -224,7 +227,15 @@ You can use [pester](https://github.com/pester/Pester) to test your powershell s
 
 <br>
 
+## Error handling 
+
+$r = 1
+
+
+<br>
+
 ## References
 
 * [Gist | Powershell script template](https://gist.github.com/9to5IT/d81802b28cfd10ab5d89)
 * [ss64 | Env vars with Powershell](https://ss64.com/ps/syntax-env.html)
+* [ | ](https://channel9.msdn.com/Series/advpowershell3/09)

@@ -79,4 +79,3 @@
 [Collections]: #07-collections
 [Advanced concepts]: #08-advanced-concepts
 [Resources]: #09-resources
-`
