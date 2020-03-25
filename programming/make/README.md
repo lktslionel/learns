@@ -1,5 +1,9 @@
 # Make
 
+Naming convention 
+
+https://www.gnu.org/prep/standards/html_node/Makefile-Conventions.html
+
 
 ## Contents
 
