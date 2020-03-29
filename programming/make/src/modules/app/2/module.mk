@@ -16,10 +16,15 @@ endif
 		@echo VAR=$(VAR) VAR1=$(VAR1) VAR2=$(VAR2)
 
 
+FILES := $(shell ls -m $(HOME))
 
-.PHONY = app-help
-app\:help: 
+.PHONY = echols
+echols:
+	@echo $(FILES:,=:)
 
+.PHONY = app\:help
+app\:help: test
+		@echo $@ -- $% --- $*
 		@echo "clean        : remove all build, test, coverage and Python artifacts"
 		@echo "clean-build  : remove build artifacts"
 		@echo "clean-pyc    : remove Python file artifacts"
