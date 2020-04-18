@@ -1,1 +1,1 @@
-TOTO=yes
+TOTO?=yes

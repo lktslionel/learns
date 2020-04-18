@@ -8,6 +8,8 @@ include $(MODULES)
 inc: 
 ifndef TOTO
 	@echo not defined
+else
+	@echo $(TOTO)
 endif
 
 test: 
