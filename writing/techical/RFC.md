@@ -1,4 +1,4 @@
-###### PROJECT > APP
+###### PROJECT • APP
 
 # RFC : Title
 
