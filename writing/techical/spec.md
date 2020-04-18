@@ -4,7 +4,7 @@
 
 <!-- SPEC -->
 
-| Status        | `IN-DRAFT` `UNDER-REVIEW` `ABORTED` `COMPLETE`   |
+| Status        | `IN-DRAFT` `UNDER-REVIEW` `ABORTED`/`DEFER`/`COMPLETE`   |
 :-------------- |:---------------------------------------------------- |
 | **Version**   | `X.Y.Z`|
 | **Ref**   | Github issue  |
@@ -53,6 +53,33 @@ Licensed under the [MIT](LICENSE) License.
 * [X References](#X)
 
 <!-- /TOC -->
+
+
+<br>
+
+## <a name="1"/> 1 Introduction
+### <a name="1.1"/> 1.1 Purpose
+### <a name="1.2"/> 1.2 Scope
+### <a name="1.3"/> 1.3 Conventions
+### <a name="1.4"/> 1.4 Abbreviations and Glossary
+### <a name="1.5"/> 1.5 Requirements
+
+<br>
+
+## <a name="2"/>2 Section 2
+
+<br>
+
+## <a name="3"/>3 Section 3
+
+<br>
+
+## <a name="4"/>4 Section 4
+
+<br>
+
+## <a name="5"/>5 References
+
 
 
 
