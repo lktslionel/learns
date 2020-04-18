@@ -7,12 +7,25 @@
 A Devops Engineer collaboration with Developers, QA/Tester, the Business and other IT Staff 
 to orchestrate the softwares' deliveries/releases in a lean way.
 
+<br>
 
 #### CI/CD
 
+<br>
 
-|Source   |<span style="color: lightgrey">→</span>|Test  |<span style="color: lightgrey">→</span>| Build |<span style="color: lightgrey">→</span>| Release  |<span style="color: lime">✓</span>| Deploy |
+
+
+|Source   |<span style="color: lightgrey">→</span>|Build  |<span style="color: lightgrey">→</span>| Test |<span style="color: lightgrey">→</span>| Release  |<span style="color: limegreen">✓</span>| Deploy |
 |---      |---|--    |---|---    |---|---       |---|---     |
+
+
+
+<br>
+
+<br>
+
+
+
 
 
 #### Disaster Recovery RTO/RPO
