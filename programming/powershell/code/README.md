@@ -37,6 +37,70 @@ There are :
 
 <br>
 
+## Types and Data Structures
+
+### Object
+
+Get object's properties and inspect them
+
+```powershell
+PS> $d = @{
+  >> Name = "data"
+>> Version = 1
+>> }
+
+PS /Users/lktslionel/Code/learns/programming/powershell> Select-Object  -InputObject $d -Property *
+
+# Version Name
+# ------- ----
+#       1 data
+```
+
+To get properties and methods use : 
+
+```powershell
+PS> Get-Member -InputObject $d 
+PS> Get-Member -InputObject $d -Type Method # For methods only
+PS> Get-Member -InputObject $d -Type *Expr* # To filter
+```
+
+
+### Arrays / ArrayList 
+
+Use `Arrays` for small set of elements
+`Arrays` has a fixed size and every operation such as insert or remove, create a new Array.
+
+```powershell
+PS> $tables = @( "test" ) 
+$tables += @("deux") 
+```
+
+Use `ArrayList` for large number of elements
+
+```powershell
+PS> $d = New-Object -TypeName System.Collections.ArrayList
+PS> $d = [System.Collections.ArrayList]@()
+PS> $d.Add(1)
+PS> $d.Add("str")
+$tables += @("deux") 
+```
+
+
+### Hastable
+
+`HashTable` Are like dictionaries where data can be store as key/value pairs
+
+```powershell
+$d = @{
+  Name = "test"
+  Version = 1.2
+}
+```
+
+
+
+<br>
+
 ## Basic Commands 
 
 To list execution policies with their scope, use the following command: 
