@@ -64,6 +64,13 @@ PS> Get-Member -InputObject $d -Type Method # For methods only
 PS> Get-Member -InputObject $d -Type *Expr* # To filter
 ```
 
+#### PSCustomObject 
+
+Use this type to create your own object type
+
+```powershell
+$myType = [PSCustomObject]@{}
+```
 
 ### Arrays / ArrayList 
 
@@ -95,6 +102,25 @@ $d = @{
   Name = "test"
   Version = 1.2
 }
+
+$d = @{ Color = ‘Red’; Transmission = ‘Automatic’; Convertible = $false}
+```
+
+Common operations 
+
+```powershell
+$d.Name
+$d["Version"]
+
+# Missing one
+$m = $d.MissingProp
+$m -Eq $Null 
+
+# Set values
+$d.Add("key", 1)
+$d["key"] = 1
+$d.ContainsKey("lol") # => False
+
 ```
 
 
