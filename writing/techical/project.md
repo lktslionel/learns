@@ -107,6 +107,13 @@ Create a new Pull Request
 Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
 
 ### <a name="06.1"/>Feedback
+
+* Ask a question on Stack Overflow
+* Request a new feature
+* Upvote popular feature requests
+* File an issue
+* Follow @code and let us know what you think!
+
 ### <a name="06.2"/>Help
 ### <a name="06.3"/>Sponsors
 
