@@ -54,6 +54,12 @@ Licensed under the [MIT](LICENSE) License.
 ### <a name="1.2"/> 1.2 Scope
 ### <a name="1.3"/> 1.3 Conventions
 ### <a name="1.4"/> 1.4 Terms
+
+#### Notice
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 (see [RFC2119]). 
+However, for readability, these words do not appear in all uppercase letters in this specification.
+
 ### <a name="1.5"/> 1.5 Abbreviations and Glossary
 ### <a name="1.6"/> 1.6 Requirements
 
