@@ -321,18 +321,18 @@ You can use [pester](https://github.com/pester/Pester) to test your powershell s
 
 #### Checklist 
 
-- [] Define a function and provider name
-- [] Define cmdletBinding attrs and optional args
-- [] Define Input parameters
-- [] Define Input methods for pipeline (Begin, Process, End)
-- [] Write the code
-- [] Write comment-based help
-- [] Define Execution Examples Region
-- [] Test the Powershell function
-- [] Use powershell Debugging, as Needed
-- [] Import Powershell Cmdlet Script inot Module
-- [] Import Powershell Module in powersehll profile
-- [] Test the Cmdlet
+- [ ] Define a function and provider name
+- [ ] Define cmdletBinding attrs and optional args
+- [ ] Define Input parameters
+- [ ] Define Input methods for pipeline (Begin, Process, End)
+- [ ] Write the code
+- [ ] Write comment-based help
+- [ ] Define Execution Examples Region
+- [ ] Test the Powershell function
+- [ ] Use powershell Debugging, as Needed
+- [ ] Import Powershell Cmdlet Script inot Module
+- [ ] Import Powershell Module in powersehll profile
+- [ ] Test the Cmdlet
 
 
 
