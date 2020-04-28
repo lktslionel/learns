@@ -317,6 +317,24 @@ You can use [pester](https://github.com/pester/Pester) to test your powershell s
 
 <br>
 
+### Common parameters and output variables 
+
+```powershell
+Debug (db)
+ErrorAction (ea)
+ErrorVariable (ev)
+InformationAction (infa)
+InformationVariable (iv)
+OutVariable (ov)
+OutBuffer (ob)
+PipelineVariable (pv)
+Verbose (vb)
+WarningAction (wa)
+WarningVariable (wv)
+```
+
+<br>
+
 ### Writing cmdlets 
 
 #### Checklist 
@@ -335,6 +353,23 @@ You can use [pester](https://github.com/pester/Pester) to test your powershell s
 - [ ] Test the Cmdlet
 
 
+<br>
+
+### Powershell Module
+
+`.psm1` file extension 
+```powershell 
+Export-ModuleMember # Function / item you want to make public
+
+#SYNTAX
+#    Export-ModuleMember 
+#      [[-Function] <string[]>] 
+#      [-Cmdlet <string[]>] 
+#      [-Variable <string[]>] 
+#      [-Alias <string[]>] 
+#      [<CommonParameters>]
+
+```
 
 
 
@@ -342,7 +377,67 @@ You can use [pester](https://github.com/pester/Pester) to test your powershell s
 
 ## Error handling 
 
-$r = 1
+
+You can use `Try - Catch - Finally` blocks.
+
+Example : 
+
+```powershell
+Try
+{
+  # Error prone instructions
+}
+Catch 
+{
+  $_ # current Error object reference
+     # $_.ErrorID
+     # $_.Exception.Message
+     #
+     #
+}
+Finally
+{
+  # Clean up anything
+}
+
+```
+
+### Using ErrorVariable
+
+Using `-ErrorVariable` enable to store the error object into the var `myError`
+
+```powershell
+Stop-Process -Name invalidprocess -ErrorVariable myError
+```
+
+And use it like this 
+
+```powershell 
+$myError.GetType()
+
+# IsPublic IsSerial Name                                     BaseType
+# -------- -------- ----                                     --------
+# True     True     ArrayList                                System.Object
+```
+
+
+### using ErrorAction
+
+Available error actions are : 
+* Stop
+* Continue
+* SilentlyContinue
+* Ignore
+* Inquire
+* Suspend (On windows only)
+
+The global variable `$ErrorActionPreference` contains the default behavior.
+
+The following command will execute silently and nothing will be shown on the console.
+
+```powershell
+Stop-Process -Name invalidprocess -ErrorVariable myError -ErrorAction SilentlyContinue
+```
 
 
 <br>
@@ -351,4 +446,5 @@ $r = 1
 
 * [Gist | Powershell script template](https://gist.github.com/9to5IT/d81802b28cfd10ab5d89)
 * [ss64 | Env vars with Powershell](https://ss64.com/ps/syntax-env.html)
-* [ | ](https://channel9.msdn.com/Series/advpowershell3/09)
+* [ MSDN channel9 | Advanced Tools & Scripting with PowerShell 3.0: (09) Script and Manifest Modules](https://channel9.msdn.com/Series/advpowershell3/09)
+* [Automatc variables](https://ss64.com/ps/syntax-automatic-variables.html)
