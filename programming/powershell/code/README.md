@@ -238,6 +238,108 @@ GetProcess | Out-File -FilePath <path/to/file>
 
 ### Adding HELP / USAGE
 
+`Get-Help` displays comment-based help
+
+> See [About Comment Based Help
+](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comment_based_help?view=powershell-7) for all available help options
+
+#### Example
+
+```powershell
+function Get-ProcessNames()
+{
+<#
+.SYNOPSIS
+
+<SHORT DESC>
+
+.DESCRIPTION
+
+<DESC>
+
+.PARAMETER Param1
+<PARAM SHORT DESC>
+
+.PARAMETER Param2
+<PARAM SHORT DESC>
+
+.INPUTS
+
+<PIPE INPUT SHORT DESC>
+
+.OUTPUTS
+
+<PIPE OUTPUT SHORT DESC>
+
+.EXAMPLE
+
+PS> Get-ProcessNames ...
+
+.EXAMPLE
+
+PS> Get-ProcessNames ....
+
+.LINK
+#>
+
+}
+```
+
+It will produce :
+
+```powershell
+PS> Get-Help Get-ProcessNames
+
+NAME
+  Get-ProcessNames
+
+SYNOPSIS
+  <SHORT DESC>
+
+
+SYNTAX
+  Get-ProcessNames [<CommonParameters>]
+
+
+DESCRIPTION
+  <DESC>
+
+
+RELATED LINKS
+
+REMARKS
+  To see the examples, type: "get-help Get-ProcessNames -examples".
+  For more information, type: "get-help Get-ProcessNames -detailed".
+  For technical information, type: "get-help Get-ProcessNames -full".
+```
+
+To see **Examples** :: 
+
+```powershell
+get-help Get-ProcessNames -examples
+
+NAME
+    Get-ProcessNames
+
+SYNOPSIS
+    <SHORT DESC>
+
+
+    -------------------------- EXAMPLE 1 --------------------------
+
+    PS>Get-ProcessNames ...
+
+
+
+
+
+
+    -------------------------- EXAMPLE 2 --------------------------
+
+    PS>Get-ProcessNames ....
+```    
+
+
 
 ### Heredoc 
 
@@ -460,3 +562,4 @@ Stop-Process -Name invalidprocess -ErrorVariable myError -ErrorAction SilentlyCo
 * [ss64 | Env vars with Powershell](https://ss64.com/ps/syntax-env.html)
 * [ MSDN channel9 | Advanced Tools & Scripting with PowerShell 3.0: (09) Script and Manifest Modules](https://channel9.msdn.com/Series/advpowershell3/09)
 * [Automatc variables](https://ss64.com/ps/syntax-automatic-variables.html)
+* [Docs | Powershell remoting with SSW](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7)
