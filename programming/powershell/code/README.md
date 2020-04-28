@@ -172,6 +172,13 @@ PS> Get-PSDrive
 # Variable Microsoft.PowerShell.Core\Variable
 ```
 
+You can also create your own provider : 
+
+```powershell
+PS> New-PSDrive -PSProvider Environment -Name AppEnv
+PS> Set-Location AppEnv:
+```
+
 
 ### Equivalence with bash 
 
