@@ -127,7 +127,7 @@ $d.ContainsKey("lol") # => False
 
 <br>
 
-## Basic Commands 
+## Basics 
 
 To list execution policies with their scope, use the following command: 
 
@@ -141,6 +141,64 @@ $ Get-ExecutionPolicy -List
 #       Process    Unrestricted
 #   CurrentUser    Unrestricted
 #  LocalMachine    Unrestricted
+```
+
+### Powershell providers 
+
+Built-in providers are : 
+
+```powershell
+PS> Get-PSProvider
+
+# Name                 Capabilities                               Drives
+# ----                 ------------                               ------
+# Alias                ShouldProcess                              {Alias}
+# Environment          ShouldProcess                              {Env}
+# FileSystem           Filter, ShouldProcess, Credentials         {/}
+# Function             ShouldProcess                              {Function}
+# Variable             ShouldProcess                              {Variable}
+
+
+# Or
+
+PS> Get-PSDrive
+
+# Name     Provider                              Root
+# ----     --------                              ----
+# /        Microsoft.PowerShell.Core\FileSystem  /
+# Alias    Microsoft.PowerShell.Core\Alias
+# Env      Microsoft.PowerShell.Core\Environment
+# Function Microsoft.PowerShell.Core\Function
+# Variable Microsoft.PowerShell.Core\Variable
+```
+
+
+### Equivalence with bash 
+
+To write a command on multiple line use <code>\`</code> : 
+
+```powershell
+Write-Host -param1 `
+  -param1 <VAL> `
+  -param2
+```
+
+It is also use to escape a special character like <code>\`$var</code>
+
+### Scripts Block 
+
+```powershell
+$block = {
+
+} 
+```
+
+it can contains instruction to be executed.
+use `&` to execute the block.
+
+```powershell
+$block = { Clear-Host; "Out test"}
+& $block # call the block 
 ```
 
 ### Pipes
