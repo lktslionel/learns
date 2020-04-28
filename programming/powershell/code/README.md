@@ -236,6 +236,18 @@ GetProcess | Out-File -FilePath <path/to/file>
 
 
 
+### Adding HELP / USAGE
+
+
+### Heredoc 
+
+```powershell
+
+$doc = @'
+...
+'@
+```
+
 
 <br>
 
