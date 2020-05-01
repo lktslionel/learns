@@ -127,7 +127,7 @@ $d.ContainsKey("lol") # => False
 
 <br>
 
-## Basic Commands 
+## Basics 
 
 To list execution policies with their scope, use the following command: 
 
@@ -141,6 +141,71 @@ $ Get-ExecutionPolicy -List
 #       Process    Unrestricted
 #   CurrentUser    Unrestricted
 #  LocalMachine    Unrestricted
+```
+
+### Powershell providers 
+
+Built-in providers are : 
+
+```powershell
+PS> Get-PSProvider
+
+# Name                 Capabilities                               Drives
+# ----                 ------------                               ------
+# Alias                ShouldProcess                              {Alias}
+# Environment          ShouldProcess                              {Env}
+# FileSystem           Filter, ShouldProcess, Credentials         {/}
+# Function             ShouldProcess                              {Function}
+# Variable             ShouldProcess                              {Variable}
+
+
+# Or
+
+PS> Get-PSDrive
+
+# Name     Provider                              Root
+# ----     --------                              ----
+# /        Microsoft.PowerShell.Core\FileSystem  /
+# Alias    Microsoft.PowerShell.Core\Alias
+# Env      Microsoft.PowerShell.Core\Environment
+# Function Microsoft.PowerShell.Core\Function
+# Variable Microsoft.PowerShell.Core\Variable
+```
+
+You can also create your own provider : 
+
+```powershell
+PS> New-PSDrive -PSProvider Environment -Name AppEnv
+PS> Set-Location AppEnv:
+```
+
+
+### Equivalence with bash 
+
+To write a command on multiple line use <code>\`</code> : 
+
+```powershell
+Write-Host -param1 `
+  -param1 <VAL> `
+  -param2
+```
+
+It is also use to escape a special character like <code>\`$var</code>
+
+### Scripts Block 
+
+```powershell
+$block = {
+
+} 
+```
+
+it can contains instruction to be executed.
+use `&` to execute the block.
+
+```powershell
+$block = { Clear-Host; "Out test"}
+& $block # call the block 
 ```
 
 ### Pipes
@@ -236,6 +301,120 @@ GetProcess | Out-File -FilePath <path/to/file>
 
 
 
+### Adding HELP / USAGE
+
+`Get-Help` displays comment-based help
+
+> See [About Comment Based Help
+](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comment_based_help?view=powershell-7) for all available help options
+
+#### Example
+
+```powershell
+function Get-ProcessNames()
+{
+<#
+.SYNOPSIS
+
+<SHORT DESC>
+
+.DESCRIPTION
+
+<DESC>
+
+.PARAMETER Param1
+<PARAM SHORT DESC>
+
+.PARAMETER Param2
+<PARAM SHORT DESC>
+
+.INPUTS
+
+<PIPE INPUT SHORT DESC>
+
+.OUTPUTS
+
+<PIPE OUTPUT SHORT DESC>
+
+.EXAMPLE
+
+PS> Get-ProcessNames ...
+
+.EXAMPLE
+
+PS> Get-ProcessNames ....
+
+.LINK
+#>
+
+}
+```
+
+It will produce :
+
+```powershell
+PS> Get-Help Get-ProcessNames
+
+NAME
+  Get-ProcessNames
+
+SYNOPSIS
+  <SHORT DESC>
+
+
+SYNTAX
+  Get-ProcessNames [<CommonParameters>]
+
+
+DESCRIPTION
+  <DESC>
+
+
+RELATED LINKS
+
+REMARKS
+  To see the examples, type: "get-help Get-ProcessNames -examples".
+  For more information, type: "get-help Get-ProcessNames -detailed".
+  For technical information, type: "get-help Get-ProcessNames -full".
+```
+
+To see **Examples** :: 
+
+```powershell
+get-help Get-ProcessNames -examples
+
+NAME
+    Get-ProcessNames
+
+SYNOPSIS
+    <SHORT DESC>
+
+
+    -------------------------- EXAMPLE 1 --------------------------
+
+    PS>Get-ProcessNames ...
+
+
+
+
+
+
+    -------------------------- EXAMPLE 2 --------------------------
+
+    PS>Get-ProcessNames ....
+```    
+
+
+
+### Heredoc 
+
+```powershell
+
+$doc = @'
+...
+'@
+```
+
 
 <br>
 
@@ -317,9 +496,127 @@ You can use [pester](https://github.com/pester/Pester) to test your powershell s
 
 <br>
 
+### Common parameters and output variables 
+
+```powershell
+Debug (db)
+ErrorAction (ea)
+ErrorVariable (ev)
+InformationAction (infa)
+InformationVariable (iv)
+OutVariable (ov)
+OutBuffer (ob)
+PipelineVariable (pv)
+Verbose (vb)
+WarningAction (wa)
+WarningVariable (wv)
+```
+
+<br>
+
+### Writing cmdlets 
+
+#### Checklist 
+
+- [ ] Define a function and provider name
+- [ ] Define cmdletBinding attrs and optional args
+- [ ] Define Input parameters
+- [ ] Define Input methods for pipeline (Begin, Process, End)
+- [ ] Write the code
+- [ ] Write comment-based help
+- [ ] Define Execution Examples Region
+- [ ] Test the Powershell function
+- [ ] Use powershell Debugging, as Needed
+- [ ] Import Powershell Cmdlet Script inot Module
+- [ ] Import Powershell Module in powersehll profile
+- [ ] Test the Cmdlet
+
+
+<br>
+
+### Powershell Module
+
+`.psm1` file extension 
+```powershell 
+Export-ModuleMember # Function / item you want to make public
+
+#SYNTAX
+#    Export-ModuleMember 
+#      [[-Function] <string[]>] 
+#      [-Cmdlet <string[]>] 
+#      [-Variable <string[]>] 
+#      [-Alias <string[]>] 
+#      [<CommonParameters>]
+
+```
+
+
+
+<br>
+
 ## Error handling 
 
-$r = 1
+
+You can use `Try - Catch - Finally` blocks.
+
+Example : 
+
+```powershell
+Try
+{
+  # Error prone instructions
+}
+Catch 
+{
+  $_ # current Error object reference
+     # $_.ErrorID
+     # $_.Exception.Message
+     #
+     #
+}
+Finally
+{
+  # Clean up anything
+}
+
+```
+
+### Using ErrorVariable
+
+Using `-ErrorVariable` enable to store the error object into the var `myError`
+
+```powershell
+Stop-Process -Name invalidprocess -ErrorVariable myError
+```
+
+And use it like this 
+
+```powershell 
+$myError.GetType()
+
+# IsPublic IsSerial Name                                     BaseType
+# -------- -------- ----                                     --------
+# True     True     ArrayList                                System.Object
+```
+
+
+### using ErrorAction
+
+Available error actions are : 
+* Stop
+* Continue
+* SilentlyContinue
+* Ignore
+* Inquire
+* Suspend (On windows only)
+
+The global variable `$ErrorActionPreference` contains the default behavior.
+
+The following command will execute silently and nothing will be shown on the console.
+
+```powershell
+Stop-Process -Name invalidprocess -ErrorVariable myError -ErrorAction SilentlyContinue
+```
 
 
 <br>
@@ -328,4 +625,6 @@ $r = 1
 
 * [Gist | Powershell script template](https://gist.github.com/9to5IT/d81802b28cfd10ab5d89)
 * [ss64 | Env vars with Powershell](https://ss64.com/ps/syntax-env.html)
-* [ | ](https://channel9.msdn.com/Series/advpowershell3/09)
+* [ MSDN channel9 | Advanced Tools & Scripting with PowerShell 3.0: (09) Script and Manifest Modules](https://channel9.msdn.com/Series/advpowershell3/09)
+* [Automatc variables](https://ss64.com/ps/syntax-automatic-variables.html)
+* [Docs | Powershell remoting with SSW](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7)
