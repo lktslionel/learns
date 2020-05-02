@@ -107,6 +107,8 @@ mod test {
 
 ```
 
+For an example, look inside the [code/todo/src/main.rs](code/todo/src/main.rs) file.
+
 More videos to learn unit testing in Rust : 
 
 * [Youtube | Rust Testing and TDD - An Intro to Testing and Test Driven Development](https://www.youtube.com/watch?v=2vBQFIWl36k)
