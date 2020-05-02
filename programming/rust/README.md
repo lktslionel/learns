@@ -107,9 +107,45 @@ mod test {
 
 ```
 
-For an example, look inside the [code/todo/src/main.rs](code/todo/src/main.rs) file.
+For an example, look inside the [`code/todo/src/main.rs`](code/todo/src/main.rs) file.
+
+##### Mocking 
+
+Try to mock these things : 
+
+* **External data source** : Files, databases
+* **Network connections** : Services
+* **External deps** : libraries
+
+
+We use different kinds of test doubles to do moking : 
+
+* **Spies** : Behavior verification
+* 
+
+
+We use the `double` crate to create test doubles for instances : 
+
+* Generate mock impl of `traits` and `functions`
+  * Use [`double::mock_trait!(...)`](https://docs.rs/double/latest/double/macro.mock_trait.html) macro.
+
+
+
+##### More
 
 More videos to learn unit testing in Rust : 
 
 * [Youtube | Rust Testing and TDD - An Intro to Testing and Test Driven Development](https://www.youtube.com/watch?v=2vBQFIWl36k)
 * [Youtube | Testing in Rust — Donald Whyte](https://youtu.be/sZ8mF3CBAZE)
+
+
+
+### <a name="8.2"/>8.2 Rustdoc
+
+We use the command `rustdoc` to generate the complete doc site of our Rust project.
+
+```powershell
+PS> rustdoc /path/to/rust/files/rs
+```
+
+> Check out the [example](https://doc.rust-lang.org/stable/rust-by-example/meta/doc.html) from rust-lang.org.
