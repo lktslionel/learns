@@ -8,12 +8,16 @@ use models::Document;
 
 fn main() {
 
+    let temp_doc:Document;
+
 
     let doc = Document {
-        name: String::from("Registration Form"),
+        name: String::from("Document"),
         status: Status::Initiated
     };
 
-    println!("Doc '{}' is in '{}' state.", doc.name, doc.status);
+    temp_doc = doc;
+
+    println!("Doc '{}' is in '{}' state.", temp_doc.name, temp_doc.status);
 
 }
