@@ -107,3 +107,7 @@ mod test {
 
 ```
 
+More videos to learn unit testing in Rust : 
+
+* [Youtube | Rust Testing and TDD - An Intro to Testing and Test Driven Development](https://www.youtube.com/watch?v=2vBQFIWl36k)
+* [Youtube | Testing in Rust — Donald Whyte](https://youtu.be/sZ8mF3CBAZE)
