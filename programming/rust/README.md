@@ -22,6 +22,8 @@
 * [7 Collections](#7)
 * [8 Advanced concepts](#8)
   * [8.1 Testing](#8.1)
+  * [8.2 Rustdoc](#8.2)
+  * [8.3 Closures](#8.3)
 * [9 Resources](#9)
 <!-- /TOC -->
 
@@ -127,7 +129,8 @@ We use different kinds of test doubles to do moking :
 We use the `double` crate to create test doubles for instances : 
 
 * Generate mock impl of `traits` and `functions`
-  * Use [`double::mock_trait!(...)`](https://docs.rs/double/latest/double/macro.mock_trait.html) macro.
+  * Use [`double::mock_trait!(...)`](https://docs.rs/double/latest/double/macro.mock_trait.html) macro
+  * Implement the original trait methods using the macro `mock_method!(...)`
 
 
 
@@ -149,3 +152,5 @@ PS> rustdoc /path/to/rust/files/rs
 ```
 
 > Check out the [example](https://doc.rust-lang.org/stable/rust-by-example/meta/doc.html) from rust-lang.org.
+
+### <a name="8.2"/>8.3 Closures
