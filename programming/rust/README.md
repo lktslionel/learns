@@ -82,3 +82,28 @@ THe binary is located at `$HOME/.cargo/bin/<NAME>`.
 
 ## <a name="8"/>8 Advanced concepts
 ### <a name="8.1"/>8.1 Testing
+
+#### Unit testing
+
+In rust, unit test are written inside the module code.
+So, if you're writing some code in `car.rs`, your unit test will be inside this module.
+
+```rust 
+# File: cars.rs
+
+# Your code here
+
+#[cfg(test)]
+mod test {
+  use super::*;
+
+  // 
+  #[test]
+  fn test_xxxx() {
+    // ...
+  }
+
+}
+
+```
+
