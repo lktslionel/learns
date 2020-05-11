@@ -618,6 +618,11 @@ The following command will execute silently and nothing will be shown on the con
 Stop-Process -Name invalidprocess -ErrorVariable myError -ErrorAction SilentlyContinue
 ```
 
+### ErrorView
+
+This is only available in **Powershell 7**. You can now make the rror output more readable and helful.
+You just have to set the varaible `$ErrorView`. 
+By default, it is set to `ConciseView` which provide a concise error message. See [ErrorView Doc](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#errorview) for available options.
 
 <br>
 
