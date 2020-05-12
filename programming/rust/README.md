@@ -19,7 +19,8 @@
 * [4 Functions & macros](#4)
 * [5 Errors handling & Exceptions](#5)
 * [6 OOP](#6)
-  * [6.1 6.1 Structs and methods](#6.1)
+  * [6.1 Structs and methods](#6.1)
+  * [6.2 Traits](#6.2)
 * [7 Collections](#7)
 * [8 Advanced concepts](#8)
   * [8.1 Testing](#8.1)
@@ -215,7 +216,7 @@ In Rust you can tag a loop and then specify where the `break` statement should t
 ## <a name="5"/>5 Errors handling & Exceptions
 
 ## <a name="6"/>6 OOP
-## <a name="6.1"/>6.1 Structs and methods
+### <a name="6.1"/>6.1 Structs and methods
 
 To define a struct: 
 
@@ -261,6 +262,25 @@ impl Server {
 }
 
 ```
+
+
+### <a name="6.2"/>6.2 Traits
+
+Traits are like interfaces in other programming languages.
+Structs get their behaviors by implementing traits.
+
+In traits : 
+
+* `self` in function definition reference the struct implementer
+* use `type Outpout = <TYPE>` to determine the output type of a function to implement. `fn func(self) -> Self::Output`
+
+
+In practice 
+
+```rust
+
+```
+
 
 
 ## <a name="7"/>7 Collections
@@ -383,3 +403,17 @@ enum Result<T, E> {
 }
 ```
 
+As an example `parse` function return a `Result`. You can skip pattern matching and get the actual result or a fallback value if an error happens using : 
+
+*  `unwrap())`
+*  `unwrap_or(<DEFAULT_VALUE>)` 
+
+
+**Example**
+
+Le's try to parse an int from a string : 
+
+```rust
+assert!(42 == "42".parse::<usize>().unwrap());
+assert!(0 == "42cdf".parse::<usize>().unwrap_or(0));
+```
