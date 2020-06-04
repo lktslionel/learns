@@ -476,12 +476,71 @@ Install-Module  -Name <module>  [-Source]
 
 A module folder is compose of : 
 
-* `Module.psm1|dll` : The module file
+* `Module.psm1` : The module file
+* `Module.dll`  : Module assembly
 * `Module.psd1` : Describes the contents of a module and determines how a module is processed.
 * Submodules in their own folders. Eg `Submodule2`
 * Submodules as `psm1` files. Eg `Submodule1.psm1`
 * `Types.ps1xml` : An XML file that defines extended type data. Used with `Update-TypeData`
 * `OnImport.ps1` : Hook script that runs when a moduule is imported 
+
+
+### Module Discovery
+
+#### 1. Load module from path
+
+It can be done by path : 
+
+```powershell
+Import-Module <PATH/OF/PSM1/FILE>
+```
+
+#### 2. Load module from Env
+
+> `$env:PATH` is not used because in can load things not related to powersehll and breaks the system
+
+Instead powershell uses `$env:PSModulePath`. Eg: C:\dir1;C:\dir2
+
+> Paths are separated with `;` on **Windows** and `:` on **\*nix**, **macos** systems.
+> ```powershell
+> # on windows
+> $Env:PSModulePath + ";<path>"
+> 
+> # on *unix/macos
+> $Env:PSModulePath + ";C:\ps-test\Modules"
+> ```
+> 
+
+#### 3. Load module from sytem special directory path
+
+* [XDG](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) directories
+  * `$XDG_DATA_HOME`
+  * `$XDG_CONFIG_HOME`
+  * `$XDG_DATA_DIRS`
+  * `$XDG_CONFIG_DIRS`
+  * `$XDG_CACHE_HOME`
+  * `$XDG_RUNTIME_DIR`
+
+
+* System wide
+  * `$PSHOME\Modules`
+
+* Unix/Macos
+  * `$HOME/.local/share/powershell/Modules`
+
+* Windows
+  > You can verify the location of your Documents folder using the following command: `[Environment]::GetFolderPath('MyDocuments')`.
+  * `$HOME\Documents\PowerShell\Modules`
+  * In Product Directory (within program files): `C:\Program Files\<ORG>\<PRODUCT>\Modules\`
+  * For all users in program files : `$Env:ProgramFiles\WindowsPowerShell\Modules\<Module Folder>\<Module Files>`
+  * in the Common Files Directory: `$env:ProgramFiles + '\Common Files\Modules'`
+  * for multiple versions: `C:\Program Files\<PROGRAM>\<PROGRAM><VERSION>\`
+
+> Make sure those files are present in `$env:PSModulePath`.
+
+
+
+
 
 
 <br>
@@ -668,3 +727,4 @@ By default, it is set to `ConciseView` which provide a concise error message. Se
 * [ MSDN channel9 | Advanced Tools & Scripting with PowerShell 3.0: (09) Script and Manifest Modules](https://channel9.msdn.com/Series/advpowershell3/09)
 * [Automatc variables](https://ss64.com/ps/syntax-automatic-variables.html)
 * [Docs | Powershell remoting with SSW](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7)
+* [Youtube - Module System deep-Dive by Rob Holt](https://youtu.be/jWXe-xnpLsI?list=PLDCEho7foSooQwf9xWeuY9P6ESfA7bJ5C)
