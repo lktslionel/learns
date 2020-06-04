@@ -557,8 +557,6 @@ Instead powershell uses `$env:PSModulePath`. Eg: C:\dir1;C:\dir2
 4. When it finally finds our module, it runs `Inmport-Module <FOUND_MODULE_PATH>` 
 
 
-
-
 ### Module Loading
 
 Every powersehll module is represented as a PSModuleInfo object. 
@@ -613,9 +611,37 @@ $manifest = @{
 
 You can use **dot-sourcing** for that. It creates a dummy PSModuleInfo object and register it in the **Module intrinsic**. 
 
+
+
+### Module autoloading
+
+> Autoloading is activated using `$env:PSModuleAutoLoadingPreference`. More about preferences variables [here](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7.)
+>
+> * `All`: Modules are imported automatically on first-use. To import a module, get or use any command in the module. For example, use Get-Command.
+> * `ModuleQualified`: Modules are imported automatically only when a user uses the module-qualified name of a command in the module. For example, if the user types MyModule\MyCommand, PowerShell imports the MyModule module.
+> * `None`: Automatic importing of modules is disabled in the session. To import a module, use the Import-Module cmdlet.
+
+The algorithm is documented in [`CommandDiscovery`](https://www.gngrninja.com/script-ninja/2016/3/30/powershell-getting-started-command-discovery).
+
+![](docs/assets/pwsh-command-diiscovery.png)
+
+
+### Remove Module
+
+`OnRemove()` hook is run before the module is being removed from the module table.
+
+
 <br>
 
 ## Advanced stuffs
+
+### Classes
+
+They are: 
+* Scoped to modules
+* Tied to session state
+* Their types are resolved by a special pwsh type resolution
+* Compiled before being used.
 
 ### Scopes
 
@@ -629,7 +655,7 @@ Dynamic scope shadowing
 @'
 
 function Func {
-  
+
 }
 
 '@ > ./DynamicModule.psm1
