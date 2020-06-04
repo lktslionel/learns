@@ -568,12 +568,72 @@ Use this command to get the object :
 $m = Import-Module -PassThru <MODULE_NAME>
 ```
 
+The module info object : 
+
+* Tracks all exports + metadata 
+* Looks lie a manifest
+* Holds module scope and state
+* Mutable ! (AccessMode, OnRemove)
 
 
+#### 1. Load a `psm1` powershell script module
+
+* ![](docs/assets/pwsh-load-psm1-1.png)
+* ![](docs/assets/pwsh-load-psm1-2.png)
+
+
+#### 2. Load a `dll` binary module
+
+* ![](docs/assets/pwsh-load-dll-1.png)
+* ![](docs/assets/pwsh-load-dll-2.png)
+* ![](docs/assets/pwsh-load-dll-3.png)
+
+
+#### 2. Load a `psd1` module manifest file
+
+What's a powershell module manifest
+
+```powershell
+
+$manifest = @{
+
+  Author = ;
+  Coopyright = ;
+  CmdletsToExports = @(...);
+  TypesToProcess = @(...);
+  PowersehllVersion = ;
+  PrivateData = @{ PSData = @{} }; #metadata
+  RootModule = ...; NestedModules = ...
+  CompatiblePSEditions = @('Core', 'Desktop')
+  ...
+}
+```
+
+#### 2. Load other module types `ps1` file
+
+You can use **dot-sourcing** for that. It creates a dummy PSModuleInfo object and register it in the **Module intrinsic**. 
 
 <br>
 
 ## Advanced stuffs
+
+### Scopes
+
+#### Dynamic scope 
+
+Dynamic scope shadowing 
+
+@todo
+
+```powershell
+@'
+
+function Func {
+  
+}
+
+'@ > ./DynamicModule.psm1
+```
 
 ### Environment varaibles
 
