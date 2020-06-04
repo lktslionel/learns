@@ -449,6 +449,41 @@ Install-Module  -Name <module>  [-Source]
 
 > Use `Find-Module -Name <MATCH>` to look for a module.
 
+### Module Struture 
+
+```
++------------------------------------------------+
+|  Module/                                       |
+|                          +-----------------+   |
+|  +-------------------+   |  Module.psm1    |   |
+|  | Submodule2/       |   +-----------------+   |
+|  |  +---+  +---+     |                         |
+|  |  |---|  |---|     |   +-----------------+   |
+|  |  |---|  |---|     |   |  Module.psd1    |   |
+|  |  +---+  +---+     |   +-----------------+   |
+|  |                   |                         |
+|  +-------------------+   +-----------------+   |
+|                          |  Module.dll     |   |
+|  +-------------------+   +-----------------+   |
+|  | Submodule1.psm1   |                         |
+|  +-------------------+   +-----------------+   |
+|                          |  Types.ps1xml   |   |
+|                          +-----------------+   |
+|                          |  OnImport.ps1   |   |
+|                          +-----------------+   |
++------------------------------------------------+
+```
+
+A module folder is compose of : 
+
+* `Module.psm1|dll` : The module file
+* `Module.psd1` : Describes the contents of a module and determines how a module is processed.
+* Submodules in their own folders. Eg `Submodule2`
+* Submodules as `psm1` files. Eg `Submodule1.psm1`
+* `Types.ps1xml` : An XML file that defines extended type data. Used with `Update-TypeData`
+* `OnImport.ps1` : Hook script that runs when a moduule is imported 
+
+
 <br>
 
 ## Advanced stuffs
