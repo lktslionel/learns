@@ -539,6 +539,34 @@ Instead powershell uses `$env:PSModulePath`. Eg: C:\dir1;C:\dir2
 > Make sure those files are present in `$env:PSModulePath`.
 
 
+### Module Searching
+
+> Note: Powershell module are **case-insensitive**.
+
+1. When you type `Import-Module <MODULE_NAME>`, powershell try to look for your module inside `$env:PSModulePath` directories, one after another:
+`Dir1/<MODULE_NAME>:Dir2/<MODULE_NAME>:...:DirN<MODULE_NAME>` 
+
+2. When it found the module directory, it then looks for the version inside `/Dir/<MODULE_NAME>/X.Y.Z`; it will always take the higher version.
+3. If no version directory exists, it thry tho find module files:
+   1. `.psd1` module manifest file
+   2. `.psm1` script module file
+   3. `.cdxml` cdxml module file
+   4. `.ni.dll` Engine DLL binary module
+   5. `.dll` DLL binary module
+   6. `.exe` exe
+4. When it finally finds our module, it runs `Inmport-Module <FOUND_MODULE_PATH>` 
+
+
+
+
+### Module Loading
+
+Every powersehll module is represented as a PSModuleInfo object. 
+Use this command to get the object : 
+
+```powershell
+$m = Import-Module -PassThru <MODULE_NAME>
+```
 
 
 
