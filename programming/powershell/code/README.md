@@ -842,3 +842,4 @@ By default, it is set to `ConciseView` which provide a concise error message. Se
 * [Automatc variables](https://ss64.com/ps/syntax-automatic-variables.html)
 * [Docs | Powershell remoting with SSW](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7)
 * [Youtube - Module System deep-Dive by Rob Holt](https://youtu.be/jWXe-xnpLsI?list=PLDCEho7foSooQwf9xWeuY9P6ESfA7bJ5C)
+* [Youtube - Become a parameter ninja by James O'Neill](https://youtu.be/LMw_mfYRHYI)
