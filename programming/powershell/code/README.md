@@ -225,6 +225,11 @@ If ( -Not (Test_path -Path ) )
 }
 ```
 
+#### Test coverage
+
+You can use `-What-If` to test the coverage of your code
+
+
 <br>
 
 ## Pipelines
@@ -836,6 +841,7 @@ By default, it is set to `ConciseView` which provide a concise error message. Se
 
 ## References
 
+* [Tests | Pester In Action ](https://github.com/KevinMarquette/PesterInAction)
 * [Gist | Powershell script template](https://gist.github.com/9to5IT/d81802b28cfd10ab5d89)
 * [ss64 | Env vars with Powershell](https://ss64.com/ps/syntax-env.html)
 * [ MSDN channel9 | Advanced Tools & Scripting with PowerShell 3.0: (09) Script and Manifest Modules](https://channel9.msdn.com/Series/advpowershell3/09)
