@@ -23,6 +23,18 @@
   - [7.1 Variables and Functions](#71-variables-and-functions)
   - [7.2 Workspaces](#72-workspaces)
   - [7.3 Modules](#73-modules)
+- [8.0 Importing resources](#80-importing-resources)
+- [9.0 Managing state](#90-managing-state)
+  - [Common commands](#common-commands)
+  - [Backends](#backends)
+    - [Consul](#consul)
+- [10.0 Data sources (DS)](#100-data-sources-ds)
+  - [10.1 HTTP](#101-http)
+  - [10.2 Consul](#102-consul)
+  - [10.3 Templates](#103-templates)
+- [11.0 Workspaces & Collaboration](#110-workspaces--collaboration)
+- [12.0 Troubleshootings](#120-troubleshootings)
+- [13.0 Lifecycle management](#130-lifecycle-management)
 
 
 ### 1.1 Core components
@@ -303,3 +315,211 @@ module "<MODULE_NAME>" {
   var2   = val2
 }
 ```
+
+
+
+## 8.0 Importing resources
+
+```sh
+terraform import [options] ADDR ID
+terraform import -var-file="teraform.tfvars"\
+    module.vpc.aws_subnet.public[2]\# ADDR
+    subnet-ad536afg9 # ID
+```
+
+You need to first make sure your `tfvars` are consistant with what your changes would have been if you had create the infrastructure with thoses resources.
+
+## 9.0 Managing state
+
+State is stored in **backends***.
+They can be:
+* Either **Standard** | **Enhanced**
+* Supports **Locking** | **Workspaces**
+
+
+### Common commands
+
+* `tf state list` — list objects in state data
+* `tf state show` — show details about an object
+* `tf state mv` — move an item iin state
+* `tf state rm` — Remove an item from state
+* `tf state pull` — output current state to stdout
+* `tf state push` — update remote state from local
+
+### Backends
+
+The defult backend is `local`.
+You can't interpolate vars inside the config because at the init state terraform knows nothing.
+
+
+```
+terraform {
+  backend "type" {
+    #
+    #
+  }
+}
+
+# Backend: s3 (+DynamoDB for locking)/consul/local
+```
+
+To set a new backend use the following command:
+
+```sh
+# For consul, use [path]
+tf init -backend-config="path=/to/key/on/consul"
+```
+
+#### Consul
+- Checkout (consul course)
+
+
+## 10.0 Data sources (DS)
+
+* To gllue multiple configurations
+* Resources (are DS)
+* Providers (have DS)
+* Others
+  * Templates
+  * HTTP
+  * External (from a scripts that returns valid JSON)
+  * Consul
+
+
+### 10.1 HTTP
+
+```
+data "http" "my_p" {
+  url = "xxxxx"
+}
+
+data.http.my_ip.body
+```
+
+### 10.2 Consul
+
+
+```
+data "consul_keys" "networking" {
+  key {
+    name = "<NAME>"
+    path = "xx/xx/xx"
+    default = "XXXXXXXX"
+  }
+}
+
+data.consult_keys.networking.var.vpc_cidr_range
+```
+
+Sometimes the information that you retreive will be in json, so you will need to use `jsondecode(data.xxxx.xxx)[<KEY_NAME>]`
+
+
+### 10.3 Templates
+
+* **Template strings**
+  * heredoc
+    ```
+    <<EOT
+    %{ for name in local.names }
+    ${name}-app
+    %{ endfor }
+    EOT
+    ```
+  * string interpolation 
+    ```
+    "${var.prefix}-app"
+    ```
+  * Conditional directive 
+    ```
+    "%{ if var.prefix != "" }${var.prefix}-app%{else}...%{ endif }"
+    ```
+
+* **Inline syntax**
+  * template DS
+    ```sh
+    data "template_file" "example" {
+      count = "2"
+      template = "$${var1}-$${current_count}"
+      vars = {
+        var1 = 1
+        current_count = count.index
+      }
+    }
+
+    # Get the value
+    data.template_file.example.rendered
+    ```
+  * template content inline
+    ```
+    tempatefile("peer_policy.txt", {
+      var1 = var.input1
+    })
+    ```
+    
+* **Template file**
+  
+  ```sh
+  data "temmplate_file" "peer-role" {
+    template = file("peer-policy.tpl")
+    vars = {
+      var1 = var.some_string
+    }
+  }
+
+  # Get the value
+  data.template_file.peer-role.rendered
+  ```
+
+Ref : https://www.terraform.io/docs/language/expressions/strings.html
+
+
+
+
+## 11.0 Workspaces & Collaboration
+
+The idea is to use **workspace** to separate your envs.
+You can use **consul** to store your configs :
+
+```sh
+path: /terraform/<WORKSPACE>/<PROJECT_NAME><CONTEXT>/<KEY>
+
+# In terraform
+${terraform.workspace}
+```
+
+When collaborating, we often need to separate the responsability by stack.
+The question is, how do app developer can get networking information to build their app stack?
+They will need to read a remote state.
+
+```sh
+data "terraform_remote_state" "networking" {
+  backend = "consult"
+
+  config = {
+    path = 
+    address = 
+    scheme = 
+  }
+}
+
+# Make sure daa are exported inn the form of outputs
+data.terraform_remote_state.networking.outputs.xxxxxxx
+```
+## 12.0 Troubleshootings
+
+Enable vebose logging
+
+```
+TF_LOG="TRACE | DEBUG | INFO | WARN"
+TF_LOG_PATH
+```
+
+## 13.0 Lifecycle management
+
+```
+resource 
+ xxxx yyy {
+
+}
+```
+
