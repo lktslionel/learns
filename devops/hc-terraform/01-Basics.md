@@ -523,3 +523,6 @@ resource
 }
 ```
 
+## References
+
+* [Terraform Mono Repo vs. Multi Repo: The Great Debate](https://www.hashicorp.com/blog/terraform-mono-repo-vs-multi-repo-the-great-debate)
