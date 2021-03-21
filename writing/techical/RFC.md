@@ -46,7 +46,7 @@
 * [3 Checks](#3)
 * [4 Drawbacks](#4)
 * [5 Alternatives](#5)
-* [6 Open questions](#6)
+* [6 Unresolved questions](#6)
 
 <!-- /TOC -->
 
@@ -82,6 +82,12 @@
 
 ## <a name="5"/>5 Alternatives
 
+
+<br>
+
+## <a name="6"/>6 Unresolved questions
+
+No unresolved question has been discovered so far.
 
 
 
