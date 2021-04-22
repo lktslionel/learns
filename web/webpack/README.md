@@ -21,6 +21,18 @@ export default () => "example"
 export const ex1 = "example" # import import ex1 from "example";
 ```
 
+### ES6 modules
+
+```js
+ export default (...) => { return `...`; }
+```
+
+### CommonJS modules
+
+```js
+module.exports = (...) => { return `...`; }
+```
+
 ## Tips & tricks
 
 ### Package.json 
@@ -37,4 +49,13 @@ export const ex1 = "example" # import import ex1 from "example";
 }
 
 
+```
+
+## Debugging
+
+You can use chrome browser to debug any node js scripts. Run the following command and go to chrome://inspect
+and then click on `Open dedicated DevTools for Node`.
+
+```bash 
+node --inspect --inspect-brk ./dist/main.js
 ```
