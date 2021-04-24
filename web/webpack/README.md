@@ -203,3 +203,10 @@ node --inspect --inspect-brk ./dist/main.js
 * [compression-webpack-plugin](https://webpack.js.org/plugins/compression-webpack-plugin/)
 * [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)
 * 
+
+
+## Great NPM packages
+
+* volta: Node manager
+* verdaccio: Local NPM proxy
+* scripty: To manage scripts not into package.json but in `./scripts` folder
