@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "webpack-merge": "^5.7.3"
+  }
+}

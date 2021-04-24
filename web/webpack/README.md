@@ -44,12 +44,129 @@ module.exports = (...) => { return `...`; }
 {
     "scripts": {
         "webpack": "webpack",
-        "dev": "npm run webpack -- --mode development --watch"
+        "dev": "npm run webpack -- --mode development --watch",
+        "test": "npm run webpack -- --env.mode development --watch"
     }
 }
 
+// webpack.config.js 
+
+// module.exports = function (env) {
+//   console.log(env);
+//   return {
+
+//   }
+// }
+
+module.exports = function ({ mode }) {
+  console.log(mode);
+  return {
+
+  }
+}
+
+
+
+On nep peux utiliser que la variable `env`
+
+
 
 ```
+
+## Concepts
+
+### Entry 
+
+The first JS file to kick-off
+
+```js
+// webpack.config.json
+
+module.exports = {
+    entry: './dist/main.js'
+}
+
+```
+
+### Output
+
+Where and how we're gonna distribute bundles
+
+```js
+...
+    output: {
+        path: './dist',
+        filename: 'main.js'
+    }
+...
+```
+
+#### Loaders & Rules
+
+```js
+...
+module: {
+
+    rules: [
+        {
+            test: /\.ts$/,
+            use: 'ts-loader',
+        },
+        {
+            test: /\.js$/,
+            use: 'babel-loader',
+        },
+        {
+            test: /\.js$/,
+            use: 'css-loader',
+        },
+        // Chaining loaders [right to Left [<-]
+        {
+            test: /\.less$/,
+            use: 'style', 'css', 'css-loader', // style(css(css-loader(...)))
+        },
+    ] 
+
+}
+...
+```
+
+
+### Plugins 
+
+* Is an instance/objects with an `apply` property.
+* It can hook into the complete webpack lifecycle.
+* Add additional funtionality
+
+```js
+
+MyPlugin.prototype.apply = function(compiler) {
+
+    compiler.plugin('<EVENT_NAME>', function(stats) {
+        // ....
+    });
+    compiler.plugin('failed', function(err) {
+        // ....
+    });
+
+}
+
+module.exports = MyPlugin;
+
+
+// And then add it as a plugin into webpack.config.js
+
+module.exports = {
+
+
+    plugins: [
+        new MyPlugin(),
+    ]
+}
+
+```
+
+
 
 ## Debugging
 
