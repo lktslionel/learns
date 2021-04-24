@@ -166,6 +166,20 @@ module.exports = {
 
 ```
 
+## Organization
+
+A great technique is split your config into multiple presets.
+You can checkout the preset loader in `./example/build-utils/loadPresets.js`
+
+and load it form you `package.json` by doing:
+
+```json
+
+scripts: {
+    "command": "webpack -- --env.presets <PRESET_NAME>" 
+}
+
+```
 
 
 ## Debugging
@@ -176,3 +190,9 @@ and then click on `Open dedicated DevTools for Node`.
 ```bash 
 node --inspect --inspect-brk ./dist/main.js
 ```
+
+
+## Webpack plugins 
+
+* [compression-webpack-plugin](https://webpack.js.org/plugins/compression-webpack-plugin/)
+* [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)
