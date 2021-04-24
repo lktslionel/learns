@@ -181,6 +181,12 @@ scripts: {
 
 ```
 
+## Source Maps
+
+You can use the `devtool` property to enable source maps.
+See https://webpack.js.org/configuration/devtool/
+
+
 
 ## Debugging
 
@@ -196,3 +202,4 @@ node --inspect --inspect-brk ./dist/main.js
 
 * [compression-webpack-plugin](https://webpack.js.org/plugins/compression-webpack-plugin/)
 * [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)
+* 
