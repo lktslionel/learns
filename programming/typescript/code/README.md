@@ -70,10 +70,10 @@
 
 ## 08 - Advanced concepts 
 
-### Immutability
+### 08.01 - Immutability
 
 Use `Object.freeze` to make a object immutable.
-### Hoisting 
+### 08.02 - Hoisting 
 
 > Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function
 
@@ -92,7 +92,7 @@ var x;
 console.log(x);
 ```
 
-### Types conversion
+### 08.03 - Types conversion
 
 the `+` operator tries to convenrt things to string 
 
@@ -112,6 +112,7 @@ the `+` operator tries to convenrt things to string
 '45' - 1  // => 44 (number)
 ```
 
+### 08.04 - Webpack
 ### Testing
 
 
