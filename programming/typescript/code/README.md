@@ -22,21 +22,20 @@
 
 <br>
 
-## 02 - Variables & data types
+## 02 - Variables & types
 
+### 02.1 Types
 
-### 02.1 Cautions
+If you want to know the type of a value, use: `typeof(...)`
+
+### 02.2 Cautions
 
 ### Variable declarations
 
-##### Var
-> **Var** declaration **IS NOT** block-scoped but it is function scoped
 
-##### Let
-> **Var** declaration **IS NOT** function-scoped but block-scoped
-
-##### Const
-> **Const** declaration **IS NOT** hoisted.
+* **Var** declaration **IS NOT** block-scoped but it is function scoped
+* **Var** declaration **IS NOT** function-scoped but block-scoped
+* **Const** declaration **IS NOT** hoisted.
 
 
 
