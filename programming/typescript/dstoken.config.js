@@ -105,7 +105,6 @@ module.exports = function (config) {
   config.sources = {
     figma: {
       platform: "figma",
-      type: "api",
       options: {}
     }
   }
@@ -121,15 +120,13 @@ module.exports = function (config) {
         config.sources.figma,
         {
           platform: "json",
-          type: "generic",
           options: {}
         }
       ],
       targets: [
         {
           platform: "android",
-          type: "os",
-          builder: config.builders.custom_builder,
+          // builder: config.builders.custom_builder,
           options: {
             transforms: [],
             buildPath: [],
@@ -137,7 +134,6 @@ module.exports = function (config) {
         }, 
         {
           platform: "scss",
-          type: "generic",
           // builder: config.builders.style_dictionary, // By default
           options: {}
         } 
