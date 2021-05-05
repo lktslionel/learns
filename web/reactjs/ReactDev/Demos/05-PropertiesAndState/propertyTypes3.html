@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Property Types 3</title>
+    <style>
+        body {font-family: Calibri}
+    </style>
+</head>
+<body>
+
+<div id="osl-container"></div>
+
+<script src="https://unpkg.com/prop-types/prop-types.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.js"></script>
+
+<script type="text/babel">
+
+	const isValidAge = (props, propName) => {
+		if (typeof props[propName] !== 'number')
+			throw new Error('Must be a number')
+		if (props[propName] > 120)
+			throw new Error('Max value is 120')
+	}
+	
+    class Person extends React.Component {
+
+        static propTypes = {
+            name: PropTypes.string.isRequired,
+            age: isValidAge,
+            isWelsh: PropTypes.bool,
+            skills: PropTypes.array
+        }   
+
+        static defaultProps = {
+            isWelsh: false,
+            skills: []
+        }
+        
+        render() {
+            const {name, age, isWelsh, skills} = this.props
+            return (
+              <div>
+                <h1>{name}</h1>
+                <div>Age: {age}</div>
+                <div>Nationality: { (isWelsh) ? 'Welsh' : 'Not Welsh' }</div>
+
+                { (skills.length == 0) 
+                    ?   <div>No skills</div>
+                    :   <div>Skills:
+                            {skills.map((skill, i) =>
+                                <span key={i}> {skill}</span>
+                            )}
+                        </div>
+                }
+              </div>
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <Person name="John Evans"
+                age={21}
+                isWelsh={true}
+                skills={['React', 'Angular', 'HTML', 'Skiing']} />,
+        document.getElementById('osl-container')
+    )
+    
+</script>
+
+</body>
+</html>

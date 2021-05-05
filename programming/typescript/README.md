@@ -3,16 +3,27 @@
 <br>
 
 ## Contents
-
-* 01 - [Quickstart]
-* 02 - [Variables & data types]
-* 03 - [Loops]
-* 04 - [Functions]
-* 05 - [Errors handling & Exceptions]
-* 06 - [OOP]
-* 07 - [Collections]
-* 08 - [Advanced concepts]
-* 09 - [Resources]
+- [Contents](#contents)
+- [01 - Quickstart](#01---quickstart)
+  - [Install](#install)
+- [02 - Variables & types](#02---variables--types)
+  - [02.1 Types](#021-types)
+  - [02.2 Cautions](#022-cautions)
+  - [Variable declarations](#variable-declarations)
+- [03 - Loops](#03---loops)
+- [04 - Functions](#04---functions)
+- [05 - Errors handling & Exceptions](#05---errors-handling--exceptions)
+- [06 - OOP](#06---oop)
+- [07 - Collections](#07---collections)
+- [08 - Advanced concepts](#08---advanced-concepts)
+  - [08.01 - Immutability](#0801---immutability)
+  - [08.02 - Hoisting](#0802---hoisting)
+  - [08.03 - Types conversion](#0803---types-conversion)
+  - [08.04 - Webpack](#0804---webpack)
+  - [Testing](#testing)
+  - [Design patterns](#design-patterns)
+- [09 - Resources](#09---resources)
+  - [Code samples](#code-samples)
 
 <br>
 

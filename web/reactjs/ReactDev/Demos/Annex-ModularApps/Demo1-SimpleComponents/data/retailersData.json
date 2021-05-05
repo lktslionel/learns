@@ -1,0 +1,12 @@
+[
+    {
+        "retailerName": "Acme Incorporated",
+        "products": [ "Swansea City Shirt", "Cardiff City Shirt", "Bugatti Divo", "55in OLED HDTV" ],
+        "shops": [ "London", "NY" ] 
+    },
+    {
+        "retailerName": "Mountains'R'Us",
+        "products": [ "Carving skis", "Ski boots" ],
+        "shops": [ "Val d'Isere", "St. Anton", "Kitzbuhel" ]
+    }
+]

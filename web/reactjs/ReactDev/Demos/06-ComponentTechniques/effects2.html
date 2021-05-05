@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Effect Hooks 2</title>
+	<style>
+		body {font-family: Calibri;}
+		.largeThumbnail {width: 94%;}
+		.smallThumbnail {width: 10%; margin-right: 2%;}
+	</style>
+</head>
+<body>
+
+<div id="osl-container"></div>
+<button onclick="clearGallery()">Clear gallery</button>
+
+<script src="https://unpkg.com/prop-types/prop-types.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+<script type="text/babel">
+
+    const Thumbnail = ({url, showLarge=false, onThumbnailClick=f=>f }) =>
+        <img className={showLarge ? 'largeThumbnail' : 'smallThumbnail'} src={url} title={url} onClick={onThumbnailClick} />
+
+    Thumbnail.propTypes = {
+        url: PropTypes.string.isRequired,
+        showLarge: PropTypes.bool,
+        onThumbnailClick: PropTypes.func
+    }
+
+    const Gallery = ({baseAddress, thumbnailUrls}) => {
+
+		const [selectedThumbnailUrl, setSelectedThumbnailUrl] = React.useState(undefined)
+		
+ 		React.useEffect(() => {
+			console.log('Gallery effect 1.')
+			return () => {
+				console.log("Gallery effect 1 cleanup.")
+			}
+		})
+  
+		React.useEffect(() => {
+			console.log('Gallery effect 2.')
+			return () => {
+				console.log("Gallery effect 2 cleanup.")
+			}
+		})
+
+		const largeThumbnail = (selectedThumbnailUrl)  ?
+				<Thumbnail url={baseAddress + '/' + selectedThumbnailUrl} showLarge={true} /> :
+				<h2>No image selected</h2>
+				
+		return (
+			<div>
+				<div>
+					{thumbnailUrls.map((thumbnailUrl, i) =>
+						<Thumbnail key={i}
+								   url={baseAddress + '/' + thumbnailUrl}
+								   onThumbnailClick={() => {
+									   console.log(`Thumbnail clicked: ${thumbnailUrl} at ${new Date().toString()}`)
+									   setSelectedThumbnailUrl(thumbnailUrl)
+								   }}
+						/>
+					)}
+				</div>
+				<div>Updated at {new Date().toString()}</div>
+				<div>{largeThumbnail}</div>
+			</div>
+		)
+	}
+	
+	Gallery.propTypes = {
+		baseAddress: PropTypes.string.isRequired,
+		thumbnailUrls: PropTypes.array.isRequired			
+	}
+
+	const urls = [
+		'alesund.jpg', 
+		'bronnoysund.jpg',
+		'budapest.jpg',
+		'capetown.jpg', 
+		'cork.jpg',
+		'joburghadeda.jpg',
+		'oslo.jpg',
+		'singapore.jpg'
+	]
+	
+    ReactDOM.render(
+        <Gallery baseAddress="http://olsensoft.com/thumbnails" thumbnailUrls={urls} />,
+        document.getElementById('osl-container')
+    )
+
+    function clearGallery() {
+        ReactDOM.render(
+            <h1>Gallery cleared</h1>,
+            document.getElementById('osl-container')
+        )   
+    }
+
+</script>
+
+</body>
+</html>

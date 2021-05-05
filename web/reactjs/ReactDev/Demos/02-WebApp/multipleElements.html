@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Creating Multiple Elements</title>
+</head>
+<body>
+
+<div id='osl-container'></div>
+
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+<script>
+
+    const retailer = React.createElement('div', {id: 'retailerInfo'},
+        React.createElement('h1', null, 'Catalog'),
+        React.createElement('ul', null,
+            React.createElement('li', null, 'Swansea City shirt'),
+            React.createElement('li', null, 'Cardiff City shirt'),
+            React.createElement('li', null, 'Bugatti Divo'),
+            React.createElement('li', null, '55in OLED HD TV'),
+            React.createElement('li', null, 'Carving skis'),
+            React.createElement('li', null, 'Ski boots')
+        ),
+        React.createElement('h1', null, 'Shops'),
+        React.createElement('ul', null,
+            React.createElement('li', null, 'London'),
+            React.createElement('li', null, 'Paris'),
+            React.createElement('li', null, 'NY'),
+            React.createElement('li', null, 'Swansea')
+        )
+    )
+    
+    ReactDOM.render(retailer, document.getElementById('osl-container'))
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Memoization 3</title>
+	<style>
+		body {font-family: Consolas;}
+		.panel {background:#0677bb; color:white; margin-top:10px; padding-left:5px; padding-bottom:5px;}
+	</style>
+</head>
+<body>
+
+<div id="osl-container"></div>
+
+<script src="https://unpkg.com/prop-types/prop-types.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+<script type="text/babel">
+
+    const Panel = ({title, text}) => {
+		let count = React.useRef(0)
+		console.log(`Rendered at ${new Date().toString()}`)
+		return (
+			<div className="panel">
+				<h2>{title}</h2>
+				<div>Painted: {count.current++} times</div>
+				<div>Textbox: {text}</div>
+				<div>Updated: {new Date().toString()}</div>
+			</div>
+		)
+	}
+
+	const MemoizedPanel = React.memo(Panel, isTextLengthSame)
+
+	const isTextLengthSame = (prevProps, nextProps) => prevProps.text.length == nextProps.text.length
+	const MemoizedPanelWithComparisonFunction = React.memo(Panel, isTextLengthSame)
+	
+    const App = () => {
+		const [text, setText] = React.useState('')
+		return (
+			<div>
+				<input value={text} placeholder="Enter text here" onChange={e => setText(e.target.value)} />
+				<Panel title="Normal panel" text={text}/>
+				<MemoizedPanel title="Memoized panel" text={text} />
+				<MemoizedPanelWithComparisonFunction title="Memoized panel with comparison function" text={text} />
+			</div>	
+		)
+	}
+	
+    ReactDOM.render(<App/>, document.getElementById('osl-container'))
+
+</script>
+
+</body>
+</html>

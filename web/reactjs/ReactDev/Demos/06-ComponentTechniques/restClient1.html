@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rest Client 1</title>
+	<style>
+		body {font-family: Calibri;}
+		.largeThumbnail {width: 94%;}
+		.smallThumbnail {width: 10%; margin-right: 2%;}
+	</style>
+</head>
+<body>
+
+<div id="osl-container"></div>
+
+<script src="https://unpkg.com/prop-types/prop-types.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+<script type="text/babel">
+
+	// This function uses XMLHttpRequest to do a REST request. It returns a Promise back to the client.
+	const getThumbnailUrlsFromRestService = () => {
+
+		return new Promise((resolve, reject) => {
+			
+			const request = new XMLHttpRequest()
+			request.open('GET', 'http://localhost:3000/api/thumbnailUrls')
+
+			request.onload = () => (request.status == 200) ? 
+				resolve(JSON.parse(request.response)) : 
+				reject(Error(request.statusText))
+
+			request.onerror = err => reject(err)
+
+			request.send()
+		})
+	}
+
+    const Thumbnail = ({url, showLarge=false, onThumbnailClick=f=>f }) =>
+        <img className={showLarge ? 'largeThumbnail' : 'smallThumbnail'} src={url} title={url} onClick={onThumbnailClick} />
+
+    Thumbnail.propTypes = {
+        url: PropTypes.string.isRequired,
+        showLarge: PropTypes.bool,
+        onThumbnailClick: PropTypes.func
+    }
+
+    const Gallery = ({baseAddress}) => {
+
+		const [selectedThumbnailUrl, setSelectedThumbnailUrl] = React.useState(undefined)
+		const [thumbnailUrls, setThumbnailUrls] = React.useState([])
+		const [isLoading, setIsLoading] = React.useState(false) 
+		
+		// Run this effect only after first render, i.e. similar to componentDidMount().
+		React.useEffect(() => {
+			setIsLoading(true)
+			getThumbnailUrlsFromRestService().then(
+				thumbnailUrlsResult => {
+					setThumbnailUrls(thumbnailUrlsResult)
+					setIsLoading(false)
+				},
+				error => {
+					setIsLoading(false)
+				}
+			)
+		}, [])
+  
+		const largeThumbnail = (selectedThumbnailUrl)  ?
+				<Thumbnail url={baseAddress + '/' + selectedThumbnailUrl} showLarge={true} /> :
+				<h2>No image selected</h2>
+				
+		return (
+			<div>
+				{ (isLoading) ?
+					<span>Loading URLs from REST service...</span> :
+					<div>
+						<div>
+							{thumbnailUrls.map((thumbnailUrl, i) =>
+								<Thumbnail key={i}
+										   url={baseAddress + '/' + thumbnailUrl}
+										   onThumbnailClick={() => {
+											   console.log(`Thumbnail clicked: ${thumbnailUrl} at ${new Date().toString()}`)
+											   setSelectedThumbnailUrl(thumbnailUrl)										   
+										   }}
+								/> 
+							)}
+						</div>
+						<div>Updated {new Date().toString()}</div>
+						<div>{largeThumbnail}</div> 
+					</div>
+				}
+			</div>
+		)
+	}
+	
+	Gallery.propTypes = {baseAddress: PropTypes.string.isRequired}
+	
+    ReactDOM.render(
+        <Gallery baseAddress="http://olsensoft.com/thumbnails" />,
+        document.getElementById('osl-container')
+    )
+
+</script>
+
+</body>
+</html>
