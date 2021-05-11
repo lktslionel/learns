@@ -1,3 +1,4 @@
+"use strict";
 //
 // TYPES
 //
@@ -86,10 +87,17 @@
 //
 // TYPE ALIASES
 //
-var currency;
-(function (currency) {
-    currency["EURO"] = "\u20AC";
-    currency["DOLLAR"] = "$";
-})(currency || (currency = {}));
-var shoesPrice = [32, currency.EURO];
-console.log(shoesPrice);
+// enum currency {
+//   EURO = "€",
+//   DOLLAR = "$",
+// } 
+// type Amount = [number, currency];
+// const shoesPrice:Amount = [32, currency.EURO]
+// console.log(shoesPrice);
+//
+// Other types
+//
+let userInput;
+if (typeof userInput === 'string') {
+    //.....
+}

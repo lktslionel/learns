@@ -1,3 +1,4 @@
+"use strict";
 //
 // FUNCTIONS
 //
@@ -19,5 +20,4 @@
 function err(_code, _reason) {
     throw { errCode: _code, reason: _reason };
 }
-var errData = err(404, "Not found");
-console.log(errData);
+err(404, "Not found");
