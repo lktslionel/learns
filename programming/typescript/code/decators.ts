@@ -13,6 +13,7 @@
  * 
  * ```
  * 
+ * Can be used as validators. {@See https://github.com/typestack/class-validator}
  * 
  */
 
