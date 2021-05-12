@@ -125,10 +125,10 @@
 //
 // TYPE ALIASES
 //
-// enum currency {
-//   EURO = "€",
-//   DOLLAR = "$",
-// } 
+enum currency {
+  EURO = "€",
+  DOLLAR = "$",
+} 
 // type Amount = [number, currency];
 
 // const shoesPrice:Amount = [32, currency.EURO]
@@ -143,3 +143,93 @@ let userInput: unknown;
 if (typeof userInput === 'string') {
   //.....
 }
+
+// You can if a type as a property with 
+if ('EURO' in currency) {
+  console.log("€")
+}
+
+// for classes 
+
+class Car {}
+class Bike {}
+
+const v = new Car
+
+if (v instanceof Car) { // work for classes but not interfaces
+  console.log("Car[v]: ", v)
+}
+
+/**
+ * Discriminated Unions
+ * 
+ * Check on a common property between 2 interfaces in a union type
+ */
+
+interface A {
+  type: 'A'
+}
+
+interface B {
+  type: 'B'
+}
+
+type AB = A | B
+
+function cases(v: AB) {
+  switch(v.type) {
+    case 'A':
+        console.log("A")
+        break
+    case 'B':
+        console.log("B")
+        break
+  }
+
+}
+
+
+/**
+ * Type casting
+ */
+
+// const value = 1 as unknown // <type>method()
+// console.log(typeof(value))
+
+/**
+ * Index type
+ */
+
+interface AppError { // I don't know the property key but I know theirs types
+  code: string
+  reason: string
+  [key: string]: string 
+}
+
+const err404: AppError = {
+  code: 'APP-E001',
+  reason: 'Not found',
+  resource: 'Page',
+}
+console.log(err404)
+
+/**
+ * Function overload
+ * 
+ */
+
+function add(a: number, b: string): string // Typescript check at compile time what is getting return by your function
+function add(a: number, b: number): number //
+function add(a: any, b: any) {
+  return a + b
+}
+
+console.log(add(1, "2").split(","))
+
+/**
+ * Nullish coalescing
+ */
+
+const nullish = null // or undefined
+
+console.log(nullish ?? 'LOL')

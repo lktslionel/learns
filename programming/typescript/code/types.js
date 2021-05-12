@@ -1,4 +1,3 @@
-"use strict";
 //
 // TYPES
 //
@@ -87,17 +86,62 @@
 //
 // TYPE ALIASES
 //
-// enum currency {
-//   EURO = "€",
-//   DOLLAR = "$",
-// } 
+var currency;
+(function (currency) {
+    currency["EURO"] = "\u20AC";
+    currency["DOLLAR"] = "$";
+})(currency || (currency = {}));
 // type Amount = [number, currency];
 // const shoesPrice:Amount = [32, currency.EURO]
 // console.log(shoesPrice);
 //
 // Other types
 //
-let userInput;
+var userInput;
 if (typeof userInput === 'string') {
     //.....
 }
+// You can if a type as a property with 
+if ('EURO' in currency) {
+    console.log("€");
+}
+// for classes 
+var Car = /** @class */ (function () {
+    function Car() {
+    }
+    return Car;
+}());
+var Bike = /** @class */ (function () {
+    function Bike() {
+    }
+    return Bike;
+}());
+var v = new Car;
+if (v instanceof Car) { // work for classes but not interfaces
+    console.log("Car[v]: ", v);
+}
+function cases(v) {
+    switch (v.type) {
+        case 'A':
+            console.log("A");
+            break;
+        case 'B':
+            console.log("B");
+            break;
+    }
+}
+var err404 = {
+    code: 'APP-E001',
+    reason: 'Not found',
+    resource: 'Page'
+};
+console.log(err404);
+function add(a, b) {
+    return a + b;
+}
+console.log(add(1, "2").split(","));
+/**
+ * Nullish coalescing
+ */
+var nullish = null; // or undefined
+console.log(nullish !== null && nullish !== void 0 ? nullish : 'LOL');
