@@ -1,6 +1,8 @@
 
 import * as Interfaces from "./interfaces/project"
 
+
+declare var window: any // Tells typescript to not worry about this var define externally
 //
 // Templates 
 //
@@ -71,8 +73,11 @@ import * as Interfaces from "./interfaces/project"
 
     projectStore.add(newProject);
 
+
     console.log(projectStore)
-      
+    
+    window.projectStore = projectStore
+
       // const h2 = (ProjectList as HTMLElement).getElementsByTagName("h2");
       
 
