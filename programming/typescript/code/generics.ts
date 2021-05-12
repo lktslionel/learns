@@ -91,6 +91,8 @@ type OptionalEnv = Partial<Env>
 const names: Readonly<string[]> = ['Max', 'Anna']
 //names.push('Manu') //=> not allowed to be changed
 
+
+
 /**
  * Experiments
  * 

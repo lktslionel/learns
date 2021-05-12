@@ -18,74 +18,79 @@
 // Store
 //
 
-type Project = {
+interface Project {
   title: string;
   desc: string;
   teamSize: number;
 }
 
-let projectStore: Project[] = [];
+let projectStore = new Set<Project>()
 
-let evt = {};
 
 //
 // Components
 //
 
-type RenderFunc = (parent: Node) => void;
 
-const createNodeFromTemplate = (templateSelector: string, onRender?: RenderFunc) => {
-  const template = document.querySelector<HTMLTemplateElement>(templateSelector);
-  const node = template?.content.cloneNode(true);
+const createNodeFromTemplate = (templateSelector: string) => {
+  const template = document.querySelector<HTMLTemplateElement>(templateSelector)!;
+  // const node = 
   
-  if (node == null) {
-    throw new Error(`HTML Form with selector[${templateSelector}] not found`);
-  }
+  const node = document.importNode(template.content, true).firstElementChild
   
-  if (onRender) {
-    onRender(node);
-  }
-
+  // {@hint We don't need this check because we used '!' which tells TS that we are sure that the element exist on the page}
+  //
+  // if (node == null) {
+  //   throw new Error(`HTML Form with selector[${templateSelector}] not found`);
+  // }
   return node;
 }
 
 
+const ProjectForm = createNodeFromTemplate("#project-input") as Element
+ProjectForm.id = 'user-input'
 
-const ProjectForm = (): Node => {
-  const form = createNodeFromTemplate("#project-input") as HTMLFormElement;
+const ProjectList = createNodeFromTemplate("#project-list") as Element;
+const projectListTitle = ProjectList.getElementsByTagName("h2").item(0) as HTMLHeadingElement;
+projectListTitle.textContent = "Projects"
 
-    document.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const self = event.target as HTMLElement;
+const projectListContainer = ProjectList.getElementsByTagName("ul").item(0) as HTMLUListElement;
 
-      const newProject: Project = {
-        title: (self.querySelector("#title") as HTMLInputElement).value || "",
-        desc: (self.querySelector("#description") as HTMLInputElement).value || "",
-        teamSize: +((self.querySelector("#people") as HTMLInputElement).value || ""),
-      }
+const ProjectItemTemplate = document.querySelector<HTMLTemplateElement>("#single-project")!;
 
-      projectStore.push(newProject);
+
+
+
+ProjectForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const self = event.target as HTMLElement;
+
+  const newProject: Project = {
+    title: (self.querySelector("#title") as HTMLInputElement).value,
+    desc: (self.querySelector("#description") as HTMLInputElement).value,
+    teamSize: +((self.querySelector("#people") as HTMLInputElement).value),
+  }
+
+  projectStore.add(newProject);
+
+  console.log(projectStore)
+    
+    // const h2 = (ProjectList as HTMLElement).getElementsByTagName("h2");
+    
+
+    // projectStore.forEach( ({title, desc, teamSize}) => {
+    const projectItem = document.importNode(ProjectItemTemplate.content, true).firstElementChild
       
-      // const h2 = (ProjectList as HTMLElement).getElementsByTagName("h2");
-      
-
-      projectStore.forEach( ({title, desc, teamSize}) => {
-        ProjectList.appendChild(
-          createNodeFromTemplate("#single-project", (node: Node) => {
-            node.textContent = `Title: ${title} | Desc: ${desc} | People: ${teamSize}`
-          })
-        )
-      });
-
-      return false;
-    });
-
-  return form;
-}
+    if (projectItem) {
+      projectItem.textContent = `Title: ${newProject.title} | Desc: ${newProject.desc} | People: ${newProject.teamSize}`
+      projectListContainer.appendChild(projectItem)
+    }
 
 
-const ProjectItem = createNodeFromTemplate("#single-project");
-const ProjectList = createNodeFromTemplate("#project-list");
+  return false;
+});
+
+
 
 
 const renderApp = (selector: string, ...components: Node[]): Node => {
@@ -101,4 +106,4 @@ const renderApp = (selector: string, ...components: Node[]): Node => {
 }
 
 
-renderApp("app", ProjectForm(), ProjectList);
+renderApp("app", ProjectForm, ProjectList);
