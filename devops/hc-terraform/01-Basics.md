@@ -526,3 +526,6 @@ resource
 ## References
 
 * [Terraform Mono Repo vs. Multi Repo: The Great Debate](https://www.hashicorp.com/blog/terraform-mono-repo-vs-multi-repo-the-great-debate)
+* [How to automate Terraform deployments](https://upcloud.com/community/tutorials/automate-terraform-deployments/)
+* [Backend Configuration](https://www.terraform.io/docs/language/settings/backends/configuration.html#partial-configuration)
+* [Simplify Terraform Configuration with Locals](https://learn.hashicorp.com/tutorials/terraform/locals)
