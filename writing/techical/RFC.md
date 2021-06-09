@@ -4,7 +4,7 @@
 
 <!-- SPEC -->
 
-| Status        | `NEW` `READY` `IN-PROGRESS` `UNDER-REVIEW` `ABORTED`/`CLOSED`/`DEFER`   |
+| Status        | `NEW` `IN-PROGRESS` `UNDER-REVIEW` `ABSOLTE` `APPROVED`|
 :-------------- |:---------------------------------------------------- |
 | **Type**   | `FEATURE` `BUG` `STAGE`   |
 | **Author(s)** | Author 1(@author1) &lt;author1@email.com&gt; <br> Author 2(@author2)&lt;author2@email.com&gt; <br> Author 3(@author3)&lt;Author3@email.com&gt; <br> |
