@@ -1,17 +1,24 @@
 ###### PROJECT • APP
 
-# RFC : Title
+# RFC-# : Title
 
-<!-- SPEC -->
+<!-- rfc:section:header -->
 
-| Status        | `NEW` `IN-PROGRESS` `UNDER-REVIEW` `ABSOLTE` `APPROVED`|
+| <!-- rfc:status -->Status        | `WIP` `UNDER-REVIEW` `ABSOLETE` `APPROVED`|
 :-------------- |:---------------------------------------------------- |
-| **Type**   | `FEATURE` `BUG` `STAGE`   |
-| **Author(s)** | Author 1(@author1) &lt;author1@email.com&gt; <br> Author 2(@author2)&lt;author2@email.com&gt; <br> Author 3(@author3)&lt;Author3@email.com&gt; <br> |
-| **Refs**   | Github issue  |
-| **Name 1**   | Value 1 |
-| **Name 2**   | Value 2 |
-| **Name 3**   | Value 3 |
+| <!-- rfc:type -->**Type**   | `FEATURE` `BUG`|
+| <!-- rfc:areas -->**Areas**   | Aera-1 |
+| <!-- rfc:related -->**Related**   | Value 2 |
+| <!-- rfc:supersedes -->**Supersedes**   | RFC-1 |
+| <!-- rfc:adr -->**ARD**   | ADR-LINK |
+| <!-- rfc:created-at -->**Created At**   | Value 3 |
+| <!-- rfc:version -->**Current Version**   | vX.Y.Z |
+| <!-- rfc:refs -->**Refs**   | Github issue  |
+| <!-- rfc:owners -->**Owner(s)** | Author 1(@author1) &lt;author1@email.com&gt; <br> Author 2(@author2)&lt;author2@email.com&gt; |
+| <!-- rfc:contributors -->**Contributors** |Author 3(@author3)&lt;author3@email.com&gt; <br> Author 4(@author4)&lt;Author4@email.com&gt; <br> |
+| <!-- rfc:approvers -->**Approvers** | Author 5(@author5)&lt;Author5@email.com&gt; <br> |
+
+<!-- rfc:section:header -->
 
 <br>
 
