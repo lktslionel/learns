@@ -51,6 +51,7 @@
 * [4 Drawbacks](#4)
 * [5 Alternatives](#5)
 * [6 Unresolved questions](#6)
+* [7 Unresolved questions](#7)
 
 <!-- /TOC -->
 
@@ -93,6 +94,9 @@
 
 No unresolved question has been discovered so far.
 
+<br>
+
+## <a name="7"/>7 Notes
 
 
 <!-- /RFC -->
